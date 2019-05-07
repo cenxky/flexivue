@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "files": [],
+  "references": [
+    { "path": "lib/tsconfig.build.json" },
+    { "path": "webpack-helpers/tsconfig.build.json" }
+  ]
+}

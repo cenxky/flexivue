@@ -1,0 +1,10 @@
+{
+  "name": "flexivue-webpack-helpers",
+  "version": "0.0.1",
+  "description": "Webpack helpers of Flexivue.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/cenxky/flexivue",
+  "author": "Charles Koyeung",
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "flexivue",
+  "version": "0.0.1",
+  "description": "Integrate Vue.js with Rails views and webpacker.",
+  "main": "dist/flexivue.umd.js",
+  "module": "lib/dist/index.js",
+  "types": "lib/dist/index.d.ts",
+  "repository": "https://github.com/cenxky/flexivue",
+  "author": "Charles Koyeung",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json && rollup --config rollup.config.js",
+    "watch": "tsc -b -w tsconfig.build.json && rollup --config rollup.config.js --watch"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.13.9",
+    "rollup": "^1.11.2",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-uglify": "^6.0.2",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.4.5",
+    "vue": "^2.6.10"
+  }
+}
