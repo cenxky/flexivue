@@ -16,7 +16,7 @@ const uglifyOptions = {
 }
 
 export default {
-  input: pkg.main,
+  input: pkg.module,
   output: {
     file: "dist/flexivue.umd.js",
     format: "umd",

@@ -1,6 +1,6 @@
 {
   "name": "flexivue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Integrate Vue.js with Rails views and webpacker.",
   "main": "dist/flexivue.umd.js",
   "module": "lib/dist/index.js",
