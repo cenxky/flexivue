@@ -33,8 +33,8 @@ import Vue from "vue/dist/vue.esm"
 import { Application } from "flexivue"
 import { definitionsFromContext } from "flexivue/webpack-helpers"
 
-application = Application.initialize({ vue: Vue })
-context = require.context("instances", true, /\.js$/)
+const application = Application.initialize({ vue: Vue })
+const context = require.context("instances", true, /\.js$/)
 
 document.addEventListener("DOMContentLoaded", () => {
   application.load(definitionsFromContext(context))
