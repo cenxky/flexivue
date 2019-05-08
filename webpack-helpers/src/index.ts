@@ -13,21 +13,21 @@ export function definitionsFromContext(context: __WebpackModuleApi.RequireContex
 }
 
 function definitionForModuleWithContextAndKey(context: __WebpackModuleApi.RequireContext, key: string): Definition | undefined {
-  var identifier = identifierForContextKey(key)
+  let identifier = identifierForContextKey(key)
   if (identifier) {
     return definitionForModuleAndIdentifier(context(key), identifier)
   }
 }
 
 function definitionForModuleAndIdentifier(module: ECMAScriptModule, identifier: string): Definition | undefined {
-  var instanceConstructor = module.default as any
+  let instanceConstructor = module.default as any
   if (typeof instanceConstructor == "function") {
     return { identifier, instanceConstructor }
   }
 }
 
 export function identifierForContextKey(key: string): string | undefined {
-  var logicalName = (key.match(/^(?:\.\/)?(.+)(?:\..+?)$/) || [])[1]
+  let logicalName = (key.match(/^(?:\.\/)?(.+)(?:\..+?)$/) || [])[1]
   if (logicalName) {
     return logicalName.replace(/\//g, "--")
   }

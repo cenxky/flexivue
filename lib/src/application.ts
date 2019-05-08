@@ -6,12 +6,16 @@ interface OptionsType {
   vue?: VueConstructor
 }
 
+interface InstancesType {
+  [key: string]: Flexivue
+}
+
 interface Flexivue extends Vue {
-  $instances: Object
+  $instances: InstancesType
 }
 
 export class Application {
-  static instances: any = {}
+  static instances: InstancesType = {}
   private vueClass: VueConstructor
 
   static initialize(options: OptionsType) {
