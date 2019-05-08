@@ -3,7 +3,12 @@ export interface InstanceConstructor {
   new(): Instance
 }
 
+interface PlainInstance {
+  [key: string]: any
+}
+
 export class Instance {
+  __proto__: any
   public el?: string | HTMLElement
   public data: any = {}
 
@@ -14,6 +19,16 @@ export class Instance {
   load(element: HTMLElement) {
     this.el = element
     this.data = { ...this.data, ...element.dataset }
-    return this
+
+    let plainInstance: PlainInstance = {}
+    let funsFrom: any[] = [this, this.__proto__]
+
+    funsFrom.forEach((obj) => {
+      Object.getOwnPropertyNames(obj).forEach(name => {
+        plainInstance[name] = obj[name]
+      })
+    })
+
+    return plainInstance
   }
 }

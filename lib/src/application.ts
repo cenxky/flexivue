@@ -6,16 +6,7 @@ interface OptionsType {
   vue?: VueConstructor
 }
 
-interface InstancesType {
-  [key: string]: Flexivue
-}
-
-interface Flexivue extends Vue {
-  $instances: InstancesType
-}
-
 export class Application {
-  static instances: InstancesType = {}
   private vueClass: VueConstructor
 
   static initialize(options: OptionsType) {
@@ -24,6 +15,7 @@ export class Application {
 
   constructor(options: OptionsType) {
     this.vueClass = options.vue || Vue
+    this.vueClass.prototype.$instances || (this.vueClass.prototype.$instances = {})
   }
 
   load(contexts: Definition[]) {
@@ -35,9 +27,8 @@ export class Application {
       let element: HTMLElement | null = document.querySelector(selector)
 
       if(element) {
-        let vueInstance: Flexivue = new this.vueClass(instance.load(element))
-        vueInstance.$instances = Application.instances
-        Application.instances.identifier = vueInstance
+        let vueInstance: Vue = new this.vueClass(instance.load(element))
+        this.vueClass.prototype.$instances[identifier] = vueInstance
       }
     })
   }
