@@ -28,5 +28,5 @@ export default {
     resolve(),
     uglify(uglifyOptions)
   ],
-  external: ['Vue']
+  external: ['vue']
 }

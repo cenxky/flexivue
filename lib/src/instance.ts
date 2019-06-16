@@ -17,8 +17,15 @@ export class Instance {
   }
 
   load(element: HTMLElement) {
+    let dataset: { [key: string]: any } = {}
+    let givenData = tryToParse(element.getAttribute('data')) || element.dataset
+
+    for (var key in givenData) {
+      dataset[key] = tryToParse(givenData[key])
+    }
+
+    this.data = { ...this.data, ...dataset }
     this.el = element
-    this.data = { ...this.data, ...element.dataset }
 
     let plainInstance: PlainInstance = {}
     let funsFrom: any[] = [this, this.__proto__]
@@ -30,5 +37,13 @@ export class Instance {
     })
 
     return plainInstance
+  }
+}
+
+function tryToParse(value: any) {
+  try {
+    return JSON.parse(value as string)
+  } catch(error) {
+    return value
   }
 }

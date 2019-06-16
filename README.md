@@ -112,8 +112,9 @@ export default class extends Instance {
 #### 9. Render instance with component in a Rails view
 
 ```erb
-<div instance="hello">
-  <h1> Hello {{name}}</h1>
+<div instance="hello" data={ greet: "Welcome!" }>
+  <h1> Hello {{name}} </h1>
+  <h1> {{greet}} </h1>
   <counter />
 </div>
 ```
