@@ -16,12 +16,12 @@ export class Instance {
     return new this()
   }
 
-  load(element: HTMLElement) {
+  _load(element: HTMLElement) {
     let dataset: { [key: string]: any } = {}
-    let givenData = tryToParse(element.getAttribute('data')) || element.dataset
+    let givenData = this._tryToParse(element.getAttribute('data')) || element.dataset
 
     for (var key in givenData) {
-      dataset[key] = tryToParse(givenData[key])
+      dataset[key] = this._tryToParse(givenData[key])
     }
 
     this.data = { ...this.data, ...dataset }
@@ -38,12 +38,12 @@ export class Instance {
 
     return plainInstance
   }
-}
 
-function tryToParse(value: any) {
-  try {
-    return JSON.parse(value as string)
-  } catch(error) {
-    return value
+  _tryToParse(value: any) {
+    try {
+      return JSON.parse(value as string)
+    } catch(error) {
+      return value
+    }
   }
 }

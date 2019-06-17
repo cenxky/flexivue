@@ -36,6 +36,7 @@ import { definitionsFromContext } from "flexivue/webpack-helpers"
 const application = Application.initialize({ vue: Vue })
 const context = require.context("instances", true, /\.js$/)
 
+// Or addEventListener("turbolinks:load") if you use turbolinks
 document.addEventListener("DOMContentLoaded", () => {
   application.load(definitionsFromContext(context))
 })
