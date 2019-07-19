@@ -116,7 +116,7 @@ export default class extends Instance {
 <div instance="hello" data={ greet: "Welcome!" }>
   <h1> Hello {{name}} </h1>
   <h1> {{greet}} </h1>
-  <counter />
+  <counter></counter>
 </div>
 ```
 
