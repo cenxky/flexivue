@@ -19,6 +19,14 @@ export class Application {
   }
 
   load(contexts: Definition[]) {
+    // Append base instance if it is not in contexts already
+    if (contexts.every(c => c.identifier !== 'base')) {
+      contexts.push({
+        identifier: 'base',
+        instanceConstructor: Instance
+      })
+    }
+
     contexts.forEach(context => {
       let identifier: string = context.identifier
       let instance: Instance = context.instanceConstructor.initialize()
@@ -30,9 +38,9 @@ export class Application {
         let vueInstance: Vue = new this.vueClass(instance._load(element))
         this.vueClass.prototype.$instances[identifier] = vueInstance
 
-        // Update [instance="your-instance"] to [loaded-intance="your-instance"]
+        // Update [instance="your-instance"] to [loaded-instance="your-instance"]
         vueInstance.$el.removeAttribute("instance")
-        vueInstance.$el.setAttribute("loaded-intance", identifier)
+        vueInstance.$el.setAttribute("loaded-instance", identifier)
       }
     })
   }
